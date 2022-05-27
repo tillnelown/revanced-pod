@@ -1,10 +1,6 @@
 FROM ubuntu:22.04
 MAINTAINER TillNelown
 
-
-#COPY youtube.apk /root/youtube.apk
-
-
 RUN apt update && apt install -y --no-install-recommends openjdk-17-jdk git android-tools-adb 
 COPY entry.sh /root/entry.sh
 
