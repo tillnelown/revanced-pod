@@ -98,10 +98,10 @@ mkdir -p build/cache /volume
 
 ls
 
-find    revanced-cli -name 'revanced-cli-*-all.jar' -exec cp {} build/revanced-cli-all.jar \;
+find    revanced-cli/build/libs -name 'revanced-cli-*-all.jar' -exec cp {} build/revanced-cli-all.jar \;
 cp      revanced-integrations/app/build/outputs/apk/release/app-release-unsigned.apk build/revanced-integrations.apk
-cp      revanced-patches/build/libs/$(basename $(ls revanced-patches/build/libs/revanced-patches-* | head -n 1 )) build/revanced-patches.jar
-cp      revanced-patcher/build/libs/$(basename $(ls revanced-patcher/build/libs/revanced-patcher-* | head -n 1 )) build/revanced-patcher.jar
+cp      revanced-patches/build/libs/$(ls revanced-patches/build/libs/ | grep -Pv 'sources|javadoc') build/revanced-patches.jar
+cp      revanced-patcher/build/libs/$(ls revanced-patcher/build/libs/ | grep -Pv 'sources|javadoc') build/revanced-patcher.jar
 
 cd /root/build
 
