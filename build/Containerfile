@@ -1,0 +1,15 @@
+FROM ubuntu:22.04
+MAINTAINER space_is_weird#8802
+
+
+#COPY youtube.apk /root/youtube.apk
+
+
+RUN apt update && apt install -y --no-install-recommends openjdk-17-jdk git android-tools-adb 
+COPY entry.sh /root/entry.sh
+
+WORKDIR /root
+
+ENV HOME /root
+ENV ANDROID_HOME=/android/Sdk
+cmd ["/root/entry.sh"]
