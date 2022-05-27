@@ -61,10 +61,6 @@ if [ "$(adb devices 2>/dev/null | head -n-1 | tail -n+2)" = "" ]; then
         adb=0
 else
 	echo "${UNDERLINE}Found adb device${NORMAL}"
-        until [[ "$(adb devices 2>/dev/null | head -n-1 | tail -n+2 | grep device)" != "" ]]; do
-                echo "Not authorized, waiting until authorization is granted"
-                sleep 5
-        done
         adb=1
 fi
 
