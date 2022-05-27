@@ -1,5 +1,5 @@
 FROM ubuntu:22.04
-MAINTAINER space_is_weird#8802
+MAINTAINER TillNelown
 
 
 #COPY youtube.apk /root/youtube.apk
