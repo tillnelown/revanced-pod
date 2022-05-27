@@ -15,10 +15,10 @@ set -e
 function BuildIt {
         echo "${UNDERLINE}Building $buildingrepo${NORMAL}"
         cd $CWD/$buildingrepo
-        if [[ "$buildingrepo" -eq "revanced-integrations" ]]; then
-                 ./gradlew build
+        if [[ "$buildingrepo" = "revanced-patches" || "$buildingrepo" = "revanced-patcher" ]]; then
+                 ./gradlew publish
         else
-                ./gradlew publish
+                ./gradlew build
         fi
         RETURN_CODE="$?"
         cd $CWD
@@ -69,7 +69,7 @@ fi
 # Github setup
 git clone --depth 1 -b dev --single-branch https://github.com/revanced/revanced-patcher
 git clone --depth 1 -b dev --single-branch https://github.com/revanced/revanced-patches
-git clone --depth 1 https://github.com/revanced/revanced-cli
+git clone --depth 1 -b dev --single-branch https://github.com/revanced/revanced-cli
 git clone --depth 1 https://github.com/revanced/revanced-integrations
 git clone --depth 1 https://github.com/revanced/Apktool
         # I don`t know why but whithout deleting these files Apktool doesn't build, upstream revanced actions https://github.com/revanced/Apktool/actions/runs/2378916602/workflow does it too
