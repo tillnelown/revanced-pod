@@ -122,7 +122,7 @@ else
 fi
 
 mkdir -p /volume/jars
-cp revanced-cli-all.jar revanced-integrations.apk revanced-patches.jar /volume/jars/
+cp -f revanced-cli-all.jar revanced-integrations.apk revanced-patches.jar /volume/jars/
 
 # revanced-cli doesn't give the correct exit code, see if revanced is created instead and check for success that way
 cp -f revanced.apk /volume/revanced.apk
