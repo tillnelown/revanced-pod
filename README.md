@@ -1,3 +1,7 @@
+# What does this do?
+These scripts will set up a container as a build environment that once run downloads all the newest sources for ReVanced and builds them into a working youtube.apk\/youtube-musik.apk.
+
+
 # Requirements
 - A working Podman installation.
   - You can test it with `podman run -it --rm ubuntu:22.04 /bin/bash`, it should give you a useable shell.
