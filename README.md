@@ -25,6 +25,8 @@ Then you will have to put the `youtube.apk` and `gradle.properties` in the `shar
 
 # Troubleshooting
 If you are having problems then you can delete the `cache` directory, it contains the gradle cache and will make gradle redownload and compile everything.
+To manually run the patcher set `--env EXIT_TO_BASH=1` in `run.sh`
+To override applied patches see the "-l" option of the cli for possible patches and set the PATCHES variable to your list `--env PATCHES="patch1 patch2[...]"` in `run.sh`
 
 # Contributors 
 Thanks to [CnC-Robert](https://github.com/CnC-Robert) for allowing me to use his [ReVanced script](https://github.com/CnC-Robert/revanced-cli-script) as a base to create build.sh.
