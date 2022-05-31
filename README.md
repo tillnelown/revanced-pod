@@ -1,5 +1,5 @@
 # What does this do?
-These scripts will set up a container as a build environment that once run downloads all the newest sources for ReVanced and builds them into a working youtube.apk\/youtube-musik.apk.
+These scripts will set up a container as a build environment that once run downloads all the newest sources for ReVanced and builds them into a working youtube.apk\/youtube-music.apk.
 
 
 # Requirements
