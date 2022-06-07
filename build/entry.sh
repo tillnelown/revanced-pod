@@ -8,12 +8,6 @@ NORMAL=$(tput sgr0)
 ERROR_COLOR=$(tput setaf 1)
 UNDERLINE=$(tput smul)
 
-if [ ! -n "${PATCHES}" ]; then
-	# All patches that will be applied, the patcher will check if the patch is made for the apk before thoug so both youtube and youtube music patches are in this list.
-	PATCHES="codecs-unlock exclusive-audio-playback tasteBuilder-remover upgrade-button-remover background-play home-promo-ads video-ads seekbar-tapping amoled disable-create-button minimized-playback old-quality-layout shorts-button integrations locale-config-fix"
-fi
-
-
 # Function that handles compiling the repositories
 function BuildIt {
         echo "${UNDERLINE}Building $buildingrepo${NORMAL}"
@@ -70,9 +64,9 @@ fi
 
 
 # Github setup
-git clone --depth 1 -b dev --single-branch https://github.com/revanced/revanced-patcher
-git clone --depth 1 -b dev --single-branch https://github.com/revanced/revanced-patches
-git clone --depth 1 -b dev --single-branch https://github.com/revanced/revanced-cli
+git clone --depth 1 --single-branch https://github.com/revanced/revanced-patcher
+git clone --depth 1 --single-branch https://github.com/revanced/revanced-patches
+git clone --depth 1 --single-branch https://github.com/revanced/revanced-cli
 git clone --depth 1 https://github.com/revanced/revanced-integrations
 git clone --depth 1 https://github.com/revanced/Apktool
         # I don`t know why but whithout deleting these files Apktool doesn't build, upstream revanced actions https://github.com/revanced/Apktool/actions/runs/2378916602/workflow does it too
@@ -116,9 +110,9 @@ if [ ! -n "${EXIT_TO_BASH}" ]; then
 	if [ $adb -eq 1 ]; then
         	echo "${UNDERLINE}Make sure the app + version you are patching is installed${NORMAL}"
 	        sleep 1
-        	java -jar revanced-cli-all.jar -a youtube.apk -d $(adb devices 2>/dev/null | grep -oP '^[^ ]*(?= *device)') -m revanced-integrations.apk -o revanced.apk -p revanced-patches.jar -rt cache $PATCHES
+        	java -jar revanced-cli-all.jar -a youtube.apk -d $(adb devices 2>/dev/null | grep -oP '^[^ ]*(?= *device)') -m revanced-integrations.apk -o revanced.apk -p revanced-patches.jar -t cache
 	else
-        	java -jar revanced-cli-all.jar -a youtube.apk -m revanced-integrations.apk -o revanced.apk -p revanced-patches.jar -rt cache $PATCHES
+        	java -jar revanced-cli-all.jar -a youtube.apk -m revanced-integrations.apk -o revanced.apk -p revanced-patches.jar -t cache
 	fi
 
 	mkdir -p /volume/jars
