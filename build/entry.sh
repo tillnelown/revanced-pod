@@ -12,12 +12,8 @@ UNDERLINE=$(tput smul)
 function BuildIt {
         echo "${UNDERLINE}Building $buildingrepo${NORMAL}"
         cd $CWD/$buildingrepo
-        if [[ "$buildingrepo" = "revanced-patches" || "$buildingrepo" = "revanced-patcher" ]]; then
-                 ./gradlew publish
-        else
-                ./gradlew build
-        fi
-        RETURN_CODE="$?"
+        	./gradlew build
+        	RETURN_CODE="$?"
         cd $CWD
 }
 
@@ -110,9 +106,9 @@ if [ ! -n "${EXIT_TO_BASH}" ]; then
 	if [ $adb -eq 1 ]; then
         	echo "${UNDERLINE}Make sure the app + version you are patching is installed${NORMAL}"
 	        sleep 1
-        	java -jar revanced-cli-all.jar -a youtube.apk -d $(adb devices 2>/dev/null | grep -oP '^[^ ]*(?= *device)') -m revanced-integrations.apk -o revanced.apk -p revanced-patches.jar -t cache
+        	java -jar revanced-cli-all.jar -a youtube.apk -d $(adb devices 2>/dev/null | grep -oP '^[^ ]*(?= *device)') -m revanced-integrations.apk -o revanced.apk -b revanced-patches.jar -t cache
 	else
-        	java -jar revanced-cli-all.jar -a youtube.apk -m revanced-integrations.apk -o revanced.apk -p revanced-patches.jar -t cache
+        	java -jar revanced-cli-all.jar -a youtube.apk -m revanced-integrations.apk -o revanced.apk -b revanced-patches.jar -t cache
 	fi
 
 	mkdir -p /volume/jars
